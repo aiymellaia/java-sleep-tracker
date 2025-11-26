@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ### IntelliJ IDEA ###
 out/
 !**/src/main/**/out/
@@ -27,3 +28,6 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+=======
+out/
+>>>>>>> 59f8bc2886859fe962a29aefc35c22740e310da7
