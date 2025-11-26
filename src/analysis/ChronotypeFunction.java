@@ -5,7 +5,6 @@ import model.SleepAnalysisResult;
 import model.SleepSession;
 
 import java.time.LocalTime;
-import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
