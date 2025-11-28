@@ -38,5 +38,20 @@ public class AverageDurationFunctionTest {
         var res = new AverageDurationFunction().analyze(sessions);
         assertEquals(120.0, res.getValue());
     }
+
+    @Test
+    void testAverageWithZero() {
+        var sessions = List.of(
+                new SleepSession(LocalDateTime.of(2025,1,1,22,0),
+                        LocalDateTime.of(2025,1,1,22,0), // 0 минут
+                        SleepQuality.GOOD),
+                new SleepSession(LocalDateTime.of(2025,1,2,23,0),
+                        LocalDateTime.of(2025,1,3,3,0), // 240 минут
+                        SleepQuality.NORMAL)
+        );
+
+        var result = new AverageDurationFunction().analyze(sessions);
+        assertEquals(120.0, result.getValue()); // (0 + 240)/2
+    }
 }
 

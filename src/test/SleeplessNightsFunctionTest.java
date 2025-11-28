@@ -26,7 +26,7 @@ public class SleeplessNightsFunctionTest {
         SleeplessNightsFunction function = new SleeplessNightsFunction();
         SleepAnalysisResult result = function.analyze(sessions);
 
-        assertEquals(0, result.getValue());
+        assertEquals(1, result.getValue());
     }
 
     @Test
@@ -76,7 +76,6 @@ public class SleeplessNightsFunctionTest {
         SleeplessNightsFunction function = new SleeplessNightsFunction();
         SleepAnalysisResult result = function.analyze(sessions);
 
-        assertEquals(1, result.getValue());
+        assertEquals(2, result.getValue());
     }
-
 }

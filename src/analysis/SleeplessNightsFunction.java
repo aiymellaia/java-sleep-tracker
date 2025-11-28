@@ -10,10 +10,12 @@ import java.util.stream.Stream;
 
 public class SleeplessNightsFunction implements SleepAnalysisFunction {
 
+    private static final String DESCRIPTION = "Количество бессонных ночей";
+
     @Override
     public SleepAnalysisResult analyze(List<SleepSession> sessions) {
         if (sessions.isEmpty()) {
-            return new SleepAnalysisResult("Количество бессонных ночей", 0);
+            return new SleepAnalysisResult(DESCRIPTION, 0);
         }
 
         LocalDateTime firstStart = sessions.stream()
@@ -26,9 +28,10 @@ public class SleeplessNightsFunction implements SleepAnalysisFunction {
                 .max(LocalDateTime::compareTo)
                 .get();
 
-        LocalDate startAnalysisDate = firstStart.toLocalTime().isBefore(LocalTime.NOON)
-                ? firstStart.toLocalDate().minusDays(1)
-                : firstStart.toLocalDate().plusDays(1);
+        LocalDate startAnalysisDate = firstStart.toLocalDate();
+        if (firstStart.toLocalTime().isBefore(LocalTime.NOON)) {
+            startAnalysisDate = startAnalysisDate.minusDays(1);
+        }
 
         LocalDate endAnalysisDate = lastEnd.toLocalDate();
 
@@ -42,15 +45,18 @@ public class SleeplessNightsFunction implements SleepAnalysisFunction {
         }
 
         long sleeplessCount = allNights
-                .filter(night -> sessions.stream()
-                        .noneMatch(s -> {
-                            LocalDateTime nightStartCheck = night.atStartOfDay();
-                            LocalDateTime nightEndCheck = night.atTime(6, 0);
-                            return s.getStart().isBefore(nightEndCheck) && s.getEnd().isAfter(nightStartCheck);
-                        })
-                )
+                .filter(night -> {
+                    LocalDateTime nightStart = night.atTime(22, 0);
+                    LocalDateTime nightEnd = night.plusDays(1).atTime(6, 0);
+
+                    return sessions.stream()
+                            .noneMatch(s ->
+                                    s.getStart().isBefore(nightEnd) &&
+                                            s.getEnd().isAfter(nightStart)
+                            );
+                })
                 .count();
 
-        return new SleepAnalysisResult("Количество бессонных ночей", (int) sleeplessCount);
+        return new SleepAnalysisResult(DESCRIPTION, (int) sleeplessCount);
     }
 }

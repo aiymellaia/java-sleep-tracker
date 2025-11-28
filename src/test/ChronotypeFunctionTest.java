@@ -54,5 +54,101 @@ public class ChronotypeFunctionTest {
 
         assertEquals(Chronotype.DOVE, result.getValue());
     }
+
+    @Test
+    public void testTieNightOwlEarlyBird() {
+        List<SleepSession> sessions = List.of(
+                new SleepSession(LocalDateTime.of(2025,10,1,23,30),
+                        LocalDateTime.of(2025,10,2,10,0),
+                        SleepQuality.GOOD),
+                new SleepSession(LocalDateTime.of(2025,10,1,21,0),
+                        LocalDateTime.of(2025,10,2,6,30),
+                        SleepQuality.GOOD)
+        );
+        ChronotypeFunction function = new ChronotypeFunction();
+        SleepAnalysisResult result = function.analyze(sessions);
+        assertEquals(Chronotype.DOVE, result.getValue());
+    }
+
+    @Test
+    public void testSingleDoveSession() {
+        List<SleepSession> sessions = List.of(
+                new SleepSession(LocalDateTime.of(2025,10,1,22,30),
+                        LocalDateTime.of(2025,10,2,10,0),
+                        SleepQuality.GOOD)
+        );
+        ChronotypeFunction function = new ChronotypeFunction();
+        SleepAnalysisResult result = function.analyze(sessions);
+        assertEquals(Chronotype.DOVE, result.getValue());
+    }
+
+    @Test
+    public void testMultipleSessionsWithWinner() {
+        List<SleepSession> sessions = List.of(
+                new SleepSession(LocalDateTime.of(2025,10,1,23,30),
+                        LocalDateTime.of(2025,10,2,10,0),
+                        SleepQuality.GOOD),
+                new SleepSession(LocalDateTime.of(2025,10,2,23,30),
+                        LocalDateTime.of(2025,10,3,10,0),
+                        SleepQuality.GOOD),
+                new SleepSession(LocalDateTime.of(2025,10,1,21,0),
+                        LocalDateTime.of(2025,10,2,6,30),
+                        SleepQuality.GOOD),
+                new SleepSession(LocalDateTime.of(2025,10,1,22,30),
+                        LocalDateTime.of(2025,10,2,10,0),
+                        SleepQuality.GOOD)
+        );
+        ChronotypeFunction function = new ChronotypeFunction();
+        SleepAnalysisResult result = function.analyze(sessions);
+        assertEquals(Chronotype.NIGHT_OWL, result.getValue());
+    }
+    @Test
+    public void testNightOwlWins() {
+        List<SleepSession> sessions = List.of(
+                new SleepSession(LocalDateTime.of(2025, 10, 1, 23, 30),
+                        LocalDateTime.of(2025, 10, 2, 9, 30), SleepQuality.GOOD),
+                new SleepSession(LocalDateTime.of(2025, 10, 2, 23, 0),
+                        LocalDateTime.of(2025, 10, 3, 10, 0), SleepQuality.GOOD),
+                new SleepSession(LocalDateTime.of(2025, 10, 3, 23, 45),
+                        LocalDateTime.of(2025, 10, 4, 10, 15), SleepQuality.GOOD)
+        );
+
+        ChronotypeFunction function = new ChronotypeFunction();
+        SleepAnalysisResult result = function.analyze(sessions);
+
+        assertEquals(Chronotype.NIGHT_OWL, result.getValue());
+    }
+
+    @Test
+    public void testWideSessionClassifiedAsDove() {
+        List<SleepSession> sessions = List.of(
+                new SleepSession(
+                        LocalDateTime.of(2025,10,1,22,30),
+                        LocalDateTime.of(2025,10,2,9,30),
+                        SleepQuality.GOOD
+                )
+        );
+
+        ChronotypeFunction function = new ChronotypeFunction();
+        SleepAnalysisResult result = function.analyze(sessions);
+
+        assertEquals(Chronotype.DOVE, result.getValue());
+    }
+
+    @Test
+    public void testBoundarySessionClassifiedAsDove() {
+        List<SleepSession> sessions = List.of(
+                new SleepSession(
+                        LocalDateTime.of(2025, 10, 1, 23, 0),
+                        LocalDateTime.of(2025, 10, 2, 9, 0),
+                        SleepQuality.GOOD
+                )
+        );
+
+        ChronotypeFunction function = new ChronotypeFunction();
+        SleepAnalysisResult result = function.analyze(sessions);
+
+        assertEquals(Chronotype.DOVE, result.getValue());
+    }
 }
 

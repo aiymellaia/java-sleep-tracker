@@ -41,4 +41,19 @@ public class MaxDurationFunctionTest {
         var result = new MaxDurationFunction().analyze(sessions);
         assertEquals(120L, result.getValue());
     }
+
+    @Test
+    void testMaxDurationWithZero() {
+        var sessions = List.of(
+                new SleepSession(LocalDateTime.of(2025,1,1,22,0),
+                        LocalDateTime.of(2025,1,1,22,0), // 0 минут
+                        SleepQuality.GOOD),
+                new SleepSession(LocalDateTime.of(2025,1,2,1,0),
+                        LocalDateTime.of(2025,1,2,3,0), // 120 минут
+                        SleepQuality.NORMAL)
+        );
+
+        var result = new MaxDurationFunction().analyze(sessions);
+        assertEquals(120L, result.getValue());
+    }
 }

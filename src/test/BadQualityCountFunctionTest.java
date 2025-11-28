@@ -8,16 +8,22 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BadQualityCountFunctionTest {
 
     @Test
     void testBadQualityCount() {
-        var sessions = List.of(
-                new SleepSession(LocalDateTime.now(), LocalDateTime.now().plusHours(1), SleepQuality.BAD),
-                new SleepSession(LocalDateTime.now(), LocalDateTime.now().plusHours(1), SleepQuality.GOOD),
-                new SleepSession(LocalDateTime.now(), LocalDateTime.now().plusHours(1), SleepQuality.BAD)
+        List<SleepSession> sessions = List.of(
+                new SleepSession(LocalDateTime.of(2025, 10, 1, 22, 0),
+                        LocalDateTime.of(2025, 10, 1, 23, 0),
+                        SleepQuality.BAD),
+                new SleepSession(LocalDateTime.of(2025, 10, 1, 23, 0),
+                        LocalDateTime.of(2025, 10, 2, 0, 0),
+                        SleepQuality.GOOD),
+                new SleepSession(LocalDateTime.of(2025, 10, 2, 0, 30),
+                        LocalDateTime.of(2025, 10, 2, 1, 30),
+                        SleepQuality.BAD)
         );
 
         var result = new BadQualityCountFunction().analyze(sessions);
@@ -26,9 +32,13 @@ public class BadQualityCountFunctionTest {
 
     @Test
     void testBadQualityZero() {
-        var sessions = List.of(
-                new SleepSession(LocalDateTime.now(), LocalDateTime.now().plusHours(1), SleepQuality.NORMAL),
-                new SleepSession(LocalDateTime.now(), LocalDateTime.now().plusHours(1), SleepQuality.GOOD)
+        List<SleepSession> sessions = List.of(
+                new SleepSession(LocalDateTime.of(2025, 10, 1, 22, 0),
+                        LocalDateTime.of(2025, 10, 1, 23, 0),
+                        SleepQuality.NORMAL),
+                new SleepSession(LocalDateTime.of(2025, 10, 1, 23, 0),
+                        LocalDateTime.of(2025, 10, 2, 0, 0),
+                        SleepQuality.GOOD)
         );
 
         var result = new BadQualityCountFunction().analyze(sessions);

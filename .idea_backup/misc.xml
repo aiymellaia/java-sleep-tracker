@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+<<<<<<< HEAD
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="corretto-21" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+=======
+    <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="21" project-jdk-type="JavaSDK">
+        <output url="file://$PROJECT_DIR$/out" />
+    </component>
+    <component name="ScalaSbtSettings">
+        <option name="customLauncherPath" />
+        <option name="customVMPath" />
+    </component>
+>>>>>>> 59f8bc2886859fe962a29aefc35c22740e310da7
+</project>
