@@ -5,22 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08fcef48-2a8a-4f59-9c82-3ab0d7731f6d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/java-sleep-tracker.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/junit_jupiter_engine.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sleep_tracker_analyzer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/sleep_tracker_analyzer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analysis/ChronotypeFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis/ChronotypeFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analysis/SleeplessNightsFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis/SleeplessNightsFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/AverageDurationFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/AverageDurationFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/BadQualityCountFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/BadQualityCountFunctionTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/ChronotypeFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/ChronotypeFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/MaxDurationFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/MaxDurationFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/MinDurationFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/MinDurationFunctionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/SleeplessNightsFunctionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/SleeplessNightsFunctionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

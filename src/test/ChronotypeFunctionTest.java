@@ -102,6 +102,7 @@ public class ChronotypeFunctionTest {
         SleepAnalysisResult result = function.analyze(sessions);
         assertEquals(Chronotype.NIGHT_OWL, result.getValue());
     }
+
     @Test
     public void testNightOwlWins() {
         List<SleepSession> sessions = List.of(
